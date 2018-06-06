@@ -15,7 +15,7 @@
 
 	<div class="container">
 		<form id="newForm" action="saveOrUpdateBook" method="post">
-			<legend>添加新书籍</legend>
+			<legend>新增/修改书籍</legend>
 			<label>书籍名称</label>
 			<input type="hidden" name="id" value="${book.id}">
 			<input type="text" name="bookname" value="${book.bookname}">

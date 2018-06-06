@@ -16,6 +16,7 @@
 	<div class="container">
 	
 		<a href="newOrEditBook" class="btn btn-success">添加新书籍</a>
+		<a href="export" class="btn btn-success">导出Excel</a>
 	
 		<table class="table">
 			<thead>
