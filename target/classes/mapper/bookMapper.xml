@@ -50,4 +50,11 @@
 		where id = #{id}
     </update>
 
+	<select id="saveImportBook" parameterType="list">
+		INSERT INTO book (bookname, author, publisher, total, nownum, isbn)
+		VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+            (#{item.bookname}, #{item.author}, #{item.publisher}, #{item.total}, #{item.nownum}, #{item.isbn})
+        </foreach>
+	</select>
 </mapper>

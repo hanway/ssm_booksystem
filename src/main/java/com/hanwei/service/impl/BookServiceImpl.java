@@ -36,6 +36,11 @@ public class BookServiceImpl implements BookService {
 	public int updateBook(Book book) {
 		return bookMapper.updateBook(book);
 	}
+	
+	@Override
+	public void saveImportBook(List<Book> bookList) {
+		bookMapper.saveImportBook(bookList);
+	}
 
 	@Override
 	public PageInfo<Book> queryByPage(String bookname, Integer pageNo, Integer pageSize) {

@@ -1,5 +1,6 @@
 package com.hanwei.controller;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -12,11 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hanwei.entity.Book;
 import com.hanwei.service.BookService;
 import com.hanwei.util.ExcelExportUtil;
 import com.hanwei.util.StringUtil;
+import com.hanwei.util.excel.ExcelParser;
 
 @Controller
 @RequestMapping(value="/booksystem")
@@ -89,5 +92,25 @@ public class BookController {
         String[] fieldNames = {"bookname", "author", "publisher", "isbn", "total", "nownum"};
         HSSFWorkbook workbook = ExcelExportUtil.exportExcel(sheetName, titleName, headers, bookList, fieldNames);
         ExcelExportUtil.FzUtil(response, titleName, workbook);
+	}
+	
+	@RequestMapping(value="book/importExcel")
+	public String importExcel(HttpServletRequest request, Model model) {
+		return "book/import";
+	}
+	
+	@RequestMapping(value="book/importSave")
+	public String importSave(MultipartFile dataFile) {
+		try {
+			List<Book> bookList = ExcelParser.getRecords(dataFile, Book.class, 1);
+			int resultCount = bookList.size();
+			if (resultCount > 0) {
+				bookService.saveImportBook(bookList);
+			}
+
+		} catch (InstantiationException | IllegalAccessException | IOException e) {
+			e.printStackTrace();
+		}
+		return "redirect:/booksystem/book/index";
 	}
 }

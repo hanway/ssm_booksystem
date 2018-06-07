@@ -19,4 +19,6 @@ public interface BookMapper {
 	public int updateBook(Book book);
 	
 	List<Book> selectBookByBookName(@Param("bookname") String bookname);
+
+	public void saveImportBook(List<Book> bookList);
 }

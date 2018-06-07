@@ -1,11 +1,11 @@
 package com.hanwei.entity;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Book implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+import com.hanwei.util.excel.AbstractSheetRecord;
+import com.hanwei.util.excel.IFieldSequence;
+
+public class Book extends AbstractSheetRecord implements IFieldSequence {
 	
 	private Integer id;//id
 	private String bookname;//Êé¼®Ãû³Æ
@@ -63,5 +63,13 @@ public class Book implements Serializable {
 	}
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
+	}
+	@Override
+	public int getSheetIndex() {
+		return 0;
+	}
+	@Override
+	public String getFieldSequence() {
+		return "id, bookname, author, publisher, isbn, total, nownum, createtime";
 	}
 }
