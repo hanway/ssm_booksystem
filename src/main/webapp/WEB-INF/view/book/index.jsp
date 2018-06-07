@@ -15,10 +15,10 @@
 
 	<div class="container">
 	
-		<a href="newOrEditBook" class="btn btn-success">添加新书籍</a>
-		<a href="export" class="btn btn-success">导出Excel</a>
+		<a href="newOrEditBook" class="btn btn-success">添加新书籍</a>&nbsp;
+		<a href="export" class="btn btn-success">导出Excel</a>&nbsp;
 		<a href="importExcel" class="btn btn-success">数据导入</a>
-	
+		<HR>
 		<table class="table">
 			<thead>
 				<tr>

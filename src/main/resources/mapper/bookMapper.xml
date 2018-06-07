@@ -8,10 +8,11 @@
     	<result column="BOOKNAME" property="bookname" jdbcType="VARCHAR" />
     	<result column="AUTHOR" property="author" jdbcType="VARCHAR" />
     	<result column="PUBLISHER" property="publisher" jdbcType="VARCHAR" />
+    	<result column="ISBN" property="isbn" jdbcType="VARCHAR" />
     	<result column="TOTAL" property="total" jdbcType="INTEGER" />
     	<result column="NOWNUM" property="nownum" jdbcType="INTEGER" />
-    	<result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
-    	<result column="ISBN" property="isbn" jdbcType="VARCHAR" />
+    	<result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+    	<result column="UPDATETIME" property="updatetime" jdbcType="VARCHAR" />
     </resultMap>
     
     <select id="selectBookByBookName" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -28,12 +29,12 @@
     </select>
     
     <select id="findAll" resultMap="BaseResultMap">
-    	select * from book
+    	select * from book order by createtime desc
     </select>
     
     <insert id="saveBook" parameterType="com.hanwei.entity.Book">
-    	insert into book(bookname, author, publisher, total, nownum, isbn)
-    	values(#{bookname}, #{author}, #{publisher}, #{total}, #{nownum}, #{isbn})
+    	insert into book(bookname, author, publisher, isbn, total, nownum, createtime)
+    	values(#{bookname}, #{author}, #{publisher}, #{isbn}, #{total}, #{nownum}, #{createtime})
     </insert>
     
     <delete id="delBook" parameterType="String">
@@ -46,15 +47,22 @@
 			author = #{author},
 			publisher = #{publisher},
 			total = #{total},
-			isbn = #{isbn}
+			isbn = #{isbn},
+			updatetime = #{updatetime}
 		where id = #{id}
     </update>
 
 	<select id="saveImportBook" parameterType="list">
-		INSERT INTO book (bookname, author, publisher, total, nownum, isbn)
+		INSERT INTO book (bookname, author, publisher, isbn, total, nownum, createtime)
 		VALUES 
 		<foreach collection="list" item="item" index="index" separator=",">
-            (#{item.bookname}, #{item.author}, #{item.publisher}, #{item.total}, #{item.nownum}, #{item.isbn})
+            (#{item.bookname},
+            #{item.author},
+			#{item.publisher},
+			#{item.isbn},
+			#{item.total},
+			#{item.nownum},
+			#{item.createtime})
         </foreach>
 	</select>
 </mapper>

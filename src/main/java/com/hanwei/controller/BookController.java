@@ -2,6 +2,7 @@ package com.hanwei.controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +29,14 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
+	/**
+	 * 首页列表
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/book/index")
 	public String findAll(HttpServletRequest request, Model model) {
 		List<Book> bookList = bookService.findAll();
@@ -35,6 +44,12 @@ public class BookController {
 		return "book/index";
 	}
 	
+	/**
+	 * 新增或修改表单页
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/book/newOrEditBook")
 	public String newOrEditBook(HttpServletRequest request, Model model) {
 		String id = request.getParameter("id");
@@ -45,6 +60,12 @@ public class BookController {
 		return "book/newOrEditBook";
 	}
 	
+	/**
+	 * 新增或修改数据持久化
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/book/saveOrUpdateBook")
 	public String saveOrUpdateBook(HttpServletRequest request, Model model) {
 		String id = request.getParameter("id");
@@ -62,6 +83,7 @@ public class BookController {
 			book.setIsbn(isbn);
 			book.setTotal(Integer.parseInt(total));
 			book.setNownum(Integer.parseInt(total));
+			book.setCreatetime(sdf.format(new Date()));
 			bookService.saveBook(book);
 		} else {
 			Book book = new Book();
@@ -71,11 +93,18 @@ public class BookController {
 			book.setPublisher(publisher);
 			book.setIsbn(isbn);
 			book.setTotal(Integer.parseInt(total));
+			book.setUpdatetime(sdf.format(new Date()));
 			bookService.updateBook(book);
 		}
 		return "redirect:/booksystem/book/index";
 	}
 	
+	/**
+	 * 删除一条数据
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="book/delBook")
 	public String delBook(HttpServletRequest request, Model model) {
 		String id = request.getParameter("id");
@@ -83,6 +112,12 @@ public class BookController {
 		return "redirect:/booksystem/book/index";
 	}
 	
+	/**
+	 * 导出Excel
+	 * @param request
+	 * @param model
+	 * @param response
+	 */
 	@RequestMapping(value="book/export")
 	public void export(HttpServletRequest request, Model model, HttpServletResponse response) {
 		List<Book> bookList = bookService.findAll();
@@ -94,18 +129,43 @@ public class BookController {
         ExcelExportUtil.FzUtil(response, titleName, workbook);
 	}
 	
+	/**
+	 * 导入Excel表单页
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="book/importExcel")
 	public String importExcel(HttpServletRequest request, Model model) {
 		return "book/import";
 	}
 	
+	/**
+	 * 导入Excel持久化
+	 * @param dataFile：上传的文件
+	 * @return
+	 */
 	@RequestMapping(value="book/importSave")
 	public String importSave(MultipartFile dataFile) {
+		List<Book> bookList = new ArrayList<Book>();
 		try {
-			List<Book> bookList = ExcelParser.getRecords(dataFile, Book.class, 1);
-			int resultCount = bookList.size();
+			List<Book> importBookList = ExcelParser.getRecords(dataFile, Book.class, 1);
+			int resultCount = importBookList.size();
 			if (resultCount > 0) {
+				for (Book bk : importBookList) {
+					Book book = new Book();
+					book.setBookname(bk.getBookname());
+					book.setAuthor(bk.getAuthor());
+					book.setPublisher(bk.getPublisher());
+					book.setIsbn(bk.getIsbn());
+					book.setTotal(bk.getTotal());
+					book.setNownum(bk.getNownum());
+					book.setCreatetime(sdf.format(new Date()));
+					bookList.add(book);
+				}
 				bookService.saveImportBook(bookList);
+			} else {
+				throw new RuntimeException("导入的Excel没有数据！");
 			}
 
 		} catch (InstantiationException | IllegalAccessException | IOException e) {

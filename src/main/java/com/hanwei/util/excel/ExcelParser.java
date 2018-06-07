@@ -1,12 +1,12 @@
 package com.hanwei.util.excel;
 
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -28,23 +28,22 @@ public class ExcelParser {
 		String fileType = "";
 		try {
 			String fileName = multipartFile.getOriginalFilename();
-			fileType = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length());
+			fileType = fileName.substring(fileName.lastIndexOf(".") + 1);
 		} catch (Exception e) {
 			System.out.println(e.getLocalizedMessage());
-			fileType = "";
 		}
-		if (!fileType.toLowerCase().equals("xls") && !fileType.toLowerCase().equals("xlsx")) {
+		if (!fileType.equals("xls") || !fileType.equals("xlsx")) {
 			throw new RuntimeException("导入文件格式错误，需上传excel文件");
 		}
 		if (multipartFile.getSize() / 1024 / 1024 > 50) {
 			throw new RuntimeException("文件大小不能超过50MB");
 		}
-		Workbook workbook = new HSSFWorkbook(multipartFile.getInputStream());
-		/*
-		 * if (fileType.toLowerCase().equals("xls") ) { workbook = new
-		 * HSSFWorkbook(multipartFile.getInputStream()); } else { workbook = new
-		 * XSSFWorkbook(multipartFile.getInputStream()); }
-		 */
+		Workbook workbook = new XSSFWorkbook(multipartFile.getInputStream());
+		/*if (fileType.equals("xls") ) { 
+			workbook = new HSSFWorkbook(multipartFile.getInputStream()); 
+		} else { 
+			workbook = new XSSFWorkbook(multipartFile.getInputStream()); 
+		}*/
 		return workbook;
 	}
 
