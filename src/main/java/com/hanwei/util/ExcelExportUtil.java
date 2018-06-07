@@ -33,9 +33,7 @@ public class ExcelExportUtil {
 	 * 参数: pattern[时间类型数据的格式]
 	 */
 	public static HSSFWorkbook exportExcel(String sheetName,String titleName,String[] headers,Collection<?> dataSet,String[] fieldNames) {
-
 		return doExportExcel(sheetName,titleName,headers,dataSet,fieldNames);
-
 	}
 
 	/**
@@ -43,7 +41,6 @@ public class ExcelExportUtil {
 	 */
 	@SuppressWarnings("deprecation")
 	private static HSSFWorkbook doExportExcel(String sheetName,String titleName,String[] headers,Collection<?> dataSet,String[] fieldNames) {
-
 		// 声明一个工作薄
 		HSSFWorkbook workbook = new HSSFWorkbook();
 
@@ -124,7 +121,6 @@ public class ExcelExportUtil {
 			cell.setCellStyle(headersStyle);
 			HSSFRichTextString text = new HSSFRichTextString(headers[i]);
 			cell.setCellValue(text);
-
 		}
 
 		// 创建表中数据行-增加样式-赋值

@@ -15,7 +15,7 @@
   </properties>
   
   <dependencies>
-  	<!-- 添加Spring依赖 -->
+  		<!-- 添加Spring依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -61,28 +61,24 @@
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
         <!--mybatis依赖 -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
         </dependency>
-
         <!-- mybatis/spring包 -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>1.2.0</version>
         </dependency>
-
         <!-- mysql驱动包 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.29</version>
         </dependency>
-        
         <!-- javaee-api包 注意和项目使用的JDK版本对应 -->  
         <dependency>  
             <groupId>javax</groupId>  
@@ -90,7 +86,6 @@
             <version>6.0</version>  
             <scope>provided</scope>  
         </dependency>  
-
         <!-- javaee-web-api包 注意和项目使用的JDK版本对应 -->  
         <dependency>  
             <groupId>javax</groupId>  
@@ -98,14 +93,12 @@
             <version>6.0</version>  
             <scope>provided</scope>  
         </dependency>
-        
         <dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>javax.servlet-api</artifactId>
 		    <version>3.0.1</version>
 		    <scope>provided</scope>
 		</dependency>
-		
 		<dependency>
 		    <groupId>javax.servlet.jsp</groupId>
 		    <artifactId>javax.servlet.jsp-api</artifactId>
@@ -117,7 +110,6 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
 		<dependency>    
            <groupId>org.slf4j</groupId>    
            <artifactId>slf4j-api</artifactId>    
@@ -150,7 +142,6 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.16</version>
 		</dependency>
-
 		<dependency>
 		    <groupId>commons-fileupload</groupId>
 		    <artifactId>commons-fileupload</artifactId>
@@ -161,8 +152,5 @@
 		    <artifactId>commons-io</artifactId>
 		    <version>2.6</version>
 		</dependency>
-		
-		
-        
   </dependencies>
 </project>

@@ -15,15 +15,6 @@
     	<result column="UPDATETIME" property="updatetime" jdbcType="VARCHAR" />
     </resultMap>
     
-    <select id="selectBookByBookName" parameterType="java.lang.String" resultMap="BaseResultMap">
-	    SELECT * FROM book
-	    WHERE 1 = 1
-	    <if test="bookname != null and bookname !=''">
-	        AND BOOKNAME = #{bookname,jdbcType=VARCHAR}
-	    </if>
-	    ORDER BY ID
-	</select>
-    
     <select id="selectBookById" parameterType="int" resultMap="BaseResultMap">
     	select * from book where id = #{id}
     </select>

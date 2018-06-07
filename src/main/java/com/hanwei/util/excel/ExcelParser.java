@@ -17,12 +17,18 @@ import java.util.Date;
 import java.util.List;
 
 public class ExcelParser {
+	
+	/**
+	 * 获取Sheet内容
+	 * @Param:dataRowIndex表示从第几行开始读取数据（包含列头）
+	 */
+	public static <T> List<T> getRecords(MultipartFile multipartFile, Class<T> clazz, int dataRowIndex) throws InstantiationException, IllegalAccessException, IOException {
+		Workbook workbook = ExcelParser.getWorkbook(multipartFile);
+		return ExcelParser.getRecords(workbook, clazz, dataRowIndex);
+	}
 
 	/**
 	 * 获取Workbook
-	 * @param multipartFile
-	 * @return
-	 * @throws IOException
 	 */
 	public static Workbook getWorkbook(MultipartFile multipartFile) throws IOException {
 		String fileType = "";
@@ -49,20 +55,6 @@ public class ExcelParser {
 
 	/**
 	 * 获取Sheet内容
-	 * @throws IllegalAccessException
-	 * @throws InstantiationException
-	 * @throws IOException
-	 * @Param:dataRowIndex表示从第几行开始读取数据（包含列头）
-	 */
-	public static <T> List<T> getRecords(MultipartFile multipartFile, Class<T> clazz, int dataRowIndex) throws InstantiationException, IllegalAccessException, IOException {
-		Workbook workbook = ExcelParser.getWorkbook(multipartFile);
-		return ExcelParser.getRecords(workbook, clazz, dataRowIndex);
-	}
-
-	/**
-	 * 获取Sheet内容
-	 * @throws IllegalAccessException
-	 * @throws InstantiationException
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> List<T> getRecords(Workbook workBook, Class<T> clazz, int dataRowIndex) throws InstantiationException, IllegalAccessException {
@@ -96,8 +88,6 @@ public class ExcelParser {
 
 	/**
 	 * 获取excel数据
-	 * @param row
-	 * @return
 	 */
 	private static String[] getValues(Row row) {
 		int cellSize = row.getLastCellNum();
@@ -118,8 +108,6 @@ public class ExcelParser {
 
 	/**
 	 * cell 值转换
-	 * @param cell
-	 * @return
 	 */
 	@SuppressWarnings("deprecation")
 	public static String getStringValueFromCell(Cell cell) {

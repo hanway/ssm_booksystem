@@ -40,9 +40,6 @@ public abstract class AbstractSheetRecord implements ISheetRecord {
 
 	/**
 	 * 查找某个类中的属性，当前类没有往父级查
-	 * @param clazz
-	 * @param fieldName
-	 * @return
 	 */
 	private Field getField(Class<?> clazz, String fieldName) {
 		Field field = null;
@@ -60,8 +57,6 @@ public abstract class AbstractSheetRecord implements ISheetRecord {
 
 	/**
 	 * 属性赋值(如需要特殊处理，子类重写该方法)
-	 * @param field
-	 * @param value
 	 */
 	public void setValue(Field field, Object value) {
 		if (field == null) {

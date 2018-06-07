@@ -2,7 +2,6 @@ package com.hanwei.service;
 
 import java.util.List;
 
-import com.github.pagehelper.PageInfo;
 import com.hanwei.entity.Book;
 
 public interface BookService {
@@ -17,7 +16,5 @@ public interface BookService {
 	
 	public int updateBook(Book book);
 	
-	PageInfo<Book> queryByPage(String bookname, Integer pageNo, Integer pageSize);
-
 	public void saveImportBook(List<Book> bookList);
 }

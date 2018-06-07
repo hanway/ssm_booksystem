@@ -2,8 +2,6 @@ package com.hanwei.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.hanwei.entity.Book;
 
 public interface BookMapper {
@@ -18,7 +16,5 @@ public interface BookMapper {
 	
 	public int updateBook(Book book);
 	
-	List<Book> selectBookByBookName(@Param("bookname") String bookname);
-
 	public void saveImportBook(List<Book> bookList);
 }
