@@ -43,7 +43,7 @@
 		where id = #{id}
     </update>
 
-	<select id="saveImportBook" parameterType="list">
+	<insert id="saveImportBook" parameterType="list">
 		INSERT INTO book (bookname, author, publisher, isbn, total, nownum, createtime)
 		VALUES 
 		<foreach collection="list" item="item" index="index" separator=",">
@@ -55,5 +55,13 @@
 			#{item.nownum},
 			#{item.createtime})
         </foreach>
+	</insert>
+	
+	<select id="findByPage" parameterType="int" resultMap="BaseResultMap">
+		select * from book limit #{pageNo}, #{pageSize}
+	</select>
+	
+	<select id="findByCount" resultType="java.lang.Integer">
+		select count(1) from book
 	</select>
 </mapper>

@@ -33,24 +33,47 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${bookList}" var="book" varStatus="vs">
+				<c:if test="${empty page.items }">
 					<tr>
-						<td>${vs.count}</td>
-						<td>${book.bookname}</td>
-						<td>${book.author}</td>
-						<td>${book.publisher}</td>
-						<td>${book.isbn}</td>
-						<td>${book.total}</td>
-						<td>${book.nownum}</td>
+						<td colspan="7">没有任何数据</td>
+					</tr>
+				</c:if>
+				<c:forEach items="${page.items}" var="book" varStatus="vs">
+					<tr>
+						<td>${vs.count }</td>
+						<td>${book.bookname }</td>
+						<td>${book.author }</td>
+						<td>${book.publisher }</td>
+						<td>${book.isbn }</td>
+						<td>${book.total }</td>
+						<td>${book.nownum }</td>
 						<td>
 							<a href="#" onclick="updateBook(${book.id})">修改</a>
 							<a href="#" onclick="delBook(${book.id})">删除</a>
 						</td>
-						
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<ul class="pager">
+			<c:choose>
+				<c:when test="${page.pageNo == 1 }">
+					<li><a href="javascript:;">上一页</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="index?p=${page.pageNo-1 }">上一页</a></li>
+				</c:otherwise>
+			</c:choose>
+		  	<c:choose>
+		  		<c:when test="${page.pageNo == page.totalPages }">
+		  			<li><a href="javascript:;">下一页</a></li>
+		  		</c:when>
+		  		<c:otherwise>
+		  			<li><a href="index?p=${page.pageNo+1 }">下一页</a></li>
+		  		</c:otherwise>
+		  	</c:choose>
+		  
+		</ul>
 	</div>
 </body>
 <script type="text/javascript">

@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.hanwei.entity.Book;
 import com.hanwei.service.BookService;
 import com.hanwei.util.ExcelExportUtil;
+import com.hanwei.util.Page;
 import com.hanwei.util.StringUtil;
 import com.hanwei.util.excel.ExcelParser;
 
@@ -36,8 +37,16 @@ public class BookController {
 	 */
 	@RequestMapping(value="/book/index")
 	public String findAll(HttpServletRequest request, Model model) {
-		List<Book> bookList = bookService.findAll();
-		model.addAttribute("bookList", bookList);
+		String p = request.getParameter("p");
+		int pageNo = 1;
+		if (StringUtil.isNotEmpty(p)) {
+			pageNo = Integer.parseInt(p);
+		}
+		int totalSize = bookService.findByCount();
+		Page<Book> page = new Page<Book>(pageNo, totalSize);
+		List<Book> list = bookService.findByPage(page.getStart(), page.getPageSize());
+		page.setItems(list);
+		model.addAttribute("page", page);
 		return "book/index";
 	}
 	

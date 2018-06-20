@@ -39,4 +39,14 @@ public class BookServiceImpl implements BookService {
 	public void saveImportBook(List<Book> bookList) {
 		bookMapper.saveImportBook(bookList);
 	}
+
+	@Override
+	public List<Book> findByPage(int pageNo, int pageSize) {
+		return bookMapper.findByPage(pageNo, pageSize);
+	}
+
+	@Override
+	public int findByCount() {
+		return bookMapper.findByCount();
+	}
 }

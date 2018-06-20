@@ -17,4 +17,8 @@ public interface BookService {
 	public int updateBook(Book book);
 	
 	public void saveImportBook(List<Book> bookList);
+
+	public List<Book> findByPage(int pageNo, int pageSize);
+	
+	public int findByCount();
 }
