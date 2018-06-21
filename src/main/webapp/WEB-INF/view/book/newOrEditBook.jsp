@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>新增/修改图书</title>
-	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-2.3.1.min.css">
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>

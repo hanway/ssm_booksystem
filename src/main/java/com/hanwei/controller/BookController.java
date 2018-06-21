@@ -24,7 +24,7 @@ import com.hanwei.util.StringUtil;
 import com.hanwei.util.excel.ExcelParser;
 
 @Controller
-@RequestMapping(value="/booksystem")
+@RequestMapping(value="/booksystem/book")
 public class BookController {
 	
 	@Autowired
@@ -35,7 +35,7 @@ public class BookController {
 	/**
 	 * 首页列表
 	 */
-	@RequestMapping(value="/book/index")
+	@RequestMapping(value="/index")
 	public String findAll(HttpServletRequest request, Model model) {
 		String p = request.getParameter("p");
 		int pageNo = 1;
@@ -53,7 +53,7 @@ public class BookController {
 	/**
 	 * 新增或修改表单页
 	 */
-	@RequestMapping(value="/book/newOrEditBook")
+	@RequestMapping(value="/newOrEditBook")
 	public String newOrEditBook(HttpServletRequest request, Model model) {
 		String id = request.getParameter("id");
 		if (StringUtil.isNotEmpty(id)) {
@@ -66,7 +66,7 @@ public class BookController {
 	/**
 	 * 新增或修改数据持久化
 	 */
-	@RequestMapping(value="/book/saveOrUpdateBook")
+	@RequestMapping(value="/saveOrUpdateBook")
 	public String saveOrUpdateBook(HttpServletRequest request, Model model) {
 		String id = request.getParameter("id");
 		String bookname = request.getParameter("bookname");
@@ -102,7 +102,7 @@ public class BookController {
 	/**
 	 * 删除一条数据
 	 */
-	@RequestMapping(value="book/delBook")
+	@RequestMapping(value="/delBook")
 	public String delBook(HttpServletRequest request, Model model) {
 		String id = request.getParameter("id");
 		bookService.delBook(id);
@@ -112,7 +112,7 @@ public class BookController {
 	/**
 	 * 导出Excel
 	 */
-	@RequestMapping(value="book/export")
+	@RequestMapping(value="/export")
 	public void export(HttpServletRequest request, Model model, HttpServletResponse response) {
 		List<Book> bookList = bookService.findAll();
 		String titleName = "书籍清单";
@@ -126,7 +126,7 @@ public class BookController {
 	/**
 	 * 导入Excel表单页
 	 */
-	@RequestMapping(value="book/importExcel")
+	@RequestMapping(value="/importExcel")
 	public String importExcel(HttpServletRequest request, Model model) {
 		return "book/import";
 	}
@@ -135,7 +135,7 @@ public class BookController {
 	 * 导入Excel持久化
 	 * @param dataFile：上传的文件
 	 */
-	@RequestMapping(value="book/importSave")
+	@RequestMapping(value="/importSave")
 	public String importSave(MultipartFile dataFile) {
 		List<Book> bookList = new ArrayList<Book>();
 		try {
