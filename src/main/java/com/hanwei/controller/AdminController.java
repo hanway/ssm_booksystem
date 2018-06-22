@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,12 +23,17 @@ public class AdminController {
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
+	/**
+	 * 登陆拦截跳转登录页
+	 */
 	@RequestMapping(value="/index")
 	public String loginForm(HttpServletRequest request, Model model) {
 		return "admin/login";
 	}
 	
-	
+	/**
+	 * 校验用户名密码
+	 */
 	@RequestMapping(value="/login")
 	public String login(HttpServletRequest request, Model model) {
 		String username = request.getParameter("username");
@@ -35,12 +41,16 @@ public class AdminController {
 
 		Admin admin = adminService.findByUsername(username);
 		if (admin != null && admin.getPassword().equals(password)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("admin", admin);
+			
 			admin.setLastaccesstime(sdf.format(new Date()));
 			admin.setLastaccessip(request.getRemoteAddr());
 			adminService.updateAdmin(admin);
 			return "redirect:/booksystem/book/index";
 		} else {
-			return "redirect:/booksystem/admin/index?code=1001";
+			model.addAttribute("code", "1001");
+			return "redirect:/booksystem/admin/index";
 		}
 		
 	}
@@ -50,7 +60,8 @@ public class AdminController {
 	 */
 	@RequestMapping(value="/logout")
 	public String logout(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		session.invalidate();
 		return "admin/login";
 	}
-
 }

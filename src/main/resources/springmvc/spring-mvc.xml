@@ -25,6 +25,14 @@
 	    <property name="maxUploadSize">
 	        <value>52428800</value>
 	    </property>
-	</bean> 
+	</bean>
+	
+	<mvc:interceptors>
+		<!-- 登录拦截器 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/booksystem/book/**" />
+			<bean class="com.hanwei.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
 </beans>
