@@ -24,10 +24,10 @@ public class AdminController {
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	/**
-	 * µÇÂ½À¹½ØÌø×ªµÇÂ¼Ò³
+	 * µÇÂ¼À¹½ØÌø×ªµÇÂ¼Ò³
 	 */
 	@RequestMapping(value="/index")
-	public String loginForm(HttpServletRequest request, Model model) {
+	public String loginForm() {
 		return "admin/login";
 	}
 	
@@ -52,15 +52,13 @@ public class AdminController {
 			model.addAttribute("code", "1001");
 			return "redirect:/booksystem/admin/index";
 		}
-		
 	}
 	
 	/**
 	 * ÍË³öµÇÂ¼
 	 */
 	@RequestMapping(value="/logout")
-	public String logout(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
+	public String logout(HttpSession session) {
 		session.invalidate();
 		return "admin/login";
 	}

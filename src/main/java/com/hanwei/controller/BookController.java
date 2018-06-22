@@ -1,6 +1,7 @@
 package com.hanwei.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,16 +38,26 @@ public class BookController {
 	 */
 	@RequestMapping(value="/index")
 	public String findAll(HttpServletRequest request, Model model) {
+		String bookname = request.getParameter("bookname");
 		String p = request.getParameter("p");
-		int pageNo = 1;
-		if (StringUtil.isNotEmpty(p)) {
-			pageNo = Integer.parseInt(p);
+		try {
+			if (StringUtil.isNotEmpty(bookname)) {
+				//处理Get方式提交的中文
+				bookname = new String(bookname.getBytes("ISO8859-1"),"UTF-8");
+			}
+			int pageNo = 1;
+			if (StringUtil.isNotEmpty(p)) {
+				pageNo = Integer.parseInt(p);
+			}
+			int totalSize = bookService.findByCount();
+			Page<Book> page = new Page<Book>(pageNo, totalSize);
+			List<Book> list = bookService.findByPage(page.getStart(), page.getPageSize(), bookname);
+			page.setItems(list);
+			model.addAttribute("page", page);
+			model.addAttribute("keyword", bookname);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
-		int totalSize = bookService.findByCount();
-		Page<Book> page = new Page<Book>(pageNo, totalSize);
-		List<Book> list = bookService.findByPage(page.getStart(), page.getPageSize());
-		page.setItems(list);
-		model.addAttribute("page", page);
 		return "book/index";
 	}
 	
@@ -67,7 +78,7 @@ public class BookController {
 	 * 新增或修改数据持久化
 	 */
 	@RequestMapping(value="/saveOrUpdateBook")
-	public String saveOrUpdateBook(HttpServletRequest request, Model model) {
+	public String saveOrUpdateBook(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		String bookname = request.getParameter("bookname");
 		String author = request.getParameter("author");
@@ -103,7 +114,7 @@ public class BookController {
 	 * 删除一条数据
 	 */
 	@RequestMapping(value="/delBook")
-	public String delBook(HttpServletRequest request, Model model) {
+	public String delBook(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		bookService.delBook(id);
 		return "redirect:/booksystem/book/index";
@@ -113,7 +124,7 @@ public class BookController {
 	 * 导出Excel
 	 */
 	@RequestMapping(value="/export")
-	public void export(HttpServletRequest request, Model model, HttpServletResponse response) {
+	public void export(HttpServletResponse response) {
 		List<Book> bookList = bookService.findAll();
 		String titleName = "书籍清单";
         String[] headers = new String[]{"书籍名称", "作者", "出版社", "ISBN码", "总数量", "剩余数量"};
@@ -127,7 +138,7 @@ public class BookController {
 	 * 导入Excel表单页
 	 */
 	@RequestMapping(value="/importExcel")
-	public String importExcel(HttpServletRequest request, Model model) {
+	public String importExcel() {
 		return "book/import";
 	}
 	

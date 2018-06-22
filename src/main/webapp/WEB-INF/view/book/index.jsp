@@ -14,6 +14,17 @@
 	</jsp:include>
 
 	<div class="container">
+		<div class="well">
+			<div class="row">
+				<form action="index" class="form-search">
+					&nbsp;&nbsp;
+					书籍名称：<input type="text" class="form-control" name="bookname" placeholder="请输入书籍名称" value="${keyword}" />&nbsp;
+					<%-- 作者：<input type="text" class="form-control" name="book.author" placeholder="请输入作者" value="${keyword}" />&nbsp;
+					出版社：<input type="text" class="form-control" name="book.publisher" placeholder="请输入出版社" value="${keyword}" /> --%>
+					<button class="btn btn-info">搜索</button>
+				</form>
+			</div>
+		</div>
 	
 		<a href="newOrEditBook" class="btn btn-success">添加新书籍</a>&nbsp;
 		<a href="export" class="btn btn-success">导出Excel</a>&nbsp;
@@ -55,38 +66,41 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<ul class="pager">
-			<c:choose>
-				<c:when test="${page.pageNo == 1 }">
-					<li><a href="javascript:;">上一页</a></li>
-				</c:when>
-				<c:otherwise>
-					<li><a href="index?p=${page.pageNo-1 }">上一页</a></li>
-				</c:otherwise>
-			</c:choose>
-		  	<c:choose>
-		  		<c:when test="${page.pageNo == page.totalPages }">
-		  			<li><a href="javascript:;">下一页</a></li>
-		  		</c:when>
-		  		<c:otherwise>
-		  			<li><a href="index?p=${page.pageNo+1 }">下一页</a></li>
-		  		</c:otherwise>
-		  	</c:choose>
-		  
-		</ul>
+		<div id="page">
+			<ul class="pager">
+				<c:choose>
+					<c:when test="${page.pageNo == 1 }">
+						<li><a href="javascript:;">上一页</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="index?p=${page.pageNo-1 }">上一页</a></li>
+					</c:otherwise>
+				</c:choose>
+			  	<c:choose>
+			  		<c:when test="${page.pageNo == page.totalPages }">
+			  			<li><a href="javascript:;">下一页</a></li>
+			  		</c:when>
+			  		<c:otherwise>
+			  			<li><a href="index?p=${page.pageNo+1 }">下一页</a></li>
+			  		</c:otherwise>
+			  	</c:choose>
+			</ul>
+		</div>
 	</div>
+	
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	<script>
+		function delBook(id) {
+			var btn = window.confirm("确定要删除吗？");
+	        if(btn == true){
+	            window.location.href = "delBook?id=" + id;
+	        }else{
+	            return;
+	        }
+		}
+		function updateBook(id) {
+			window.location.href = "newOrEditBook?id=" + id;
+		}
+	</script>
 </body>
-<script type="text/javascript">
-	function delBook(id) {
-		var btn = window.confirm("确定要删除吗？");
-        if(btn == true){
-            window.location.href = "delBook?id=" + id;
-        }else{
-            return;
-        }
-	}
-	function updateBook(id) {
-		window.location.href = "newOrEditBook?id=" + id;
-	}
-</script>
 </html>

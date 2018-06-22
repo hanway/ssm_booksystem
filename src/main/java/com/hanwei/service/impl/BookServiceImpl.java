@@ -41,8 +41,8 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<Book> findByPage(int pageNo, int pageSize) {
-		return bookMapper.findByPage(pageNo, pageSize);
+	public List<Book> findByPage(int pageNo, int pageSize, String bookname) {
+		return bookMapper.findByPage(pageNo, pageSize, bookname);
 	}
 
 	@Override

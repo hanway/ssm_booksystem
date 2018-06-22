@@ -20,7 +20,7 @@ public interface BookMapper {
 	
 	public void saveImportBook(List<Book> bookList);
 
-	public List<Book> findByPage(@Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
+	public List<Book> findByPage(@Param("pageNo") int pageNo, @Param("pageSize") int pageSize, @Param("bookname") String bookname);
 	
 	public int findByCount();
 }

@@ -18,7 +18,7 @@ public interface BookService {
 	
 	public void saveImportBook(List<Book> bookList);
 
-	public List<Book> findByPage(int pageNo, int pageSize);
+	public List<Book> findByPage(int pageNo, int pageSize, String bookname);
 	
 	public int findByCount();
 }
