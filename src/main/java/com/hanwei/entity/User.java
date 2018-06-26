@@ -1,10 +1,11 @@
 package com.hanwei.entity;
 
-public class Admin {
+public class User {
 	
 	private Integer id;//id
 	private String username;//用户名
 	private String password;//密码
+	private String role;//角色
 	private String lastaccesstime;//最后登录时间
 	private String lastaccessip;//最后登录IP
 	
@@ -37,5 +38,11 @@ public class Admin {
 	}
 	public void setLastaccessip(String lastaccessip) {
 		this.lastaccessip = lastaccessip;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

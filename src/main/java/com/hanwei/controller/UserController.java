@@ -1,8 +1,5 @@
 package com.hanwei.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,24 +8,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hanwei.entity.Admin;
-import com.hanwei.service.AdminService;
+import com.hanwei.entity.User;
+import com.hanwei.service.UserService;
+import com.hanwei.util.DateUtil;
 
 @Controller
-@RequestMapping(value="/booksystem/admin")
-public class AdminController {
+@RequestMapping(value="/booksystem/user")
+public class UserController {
 	
 	@Autowired
-	private AdminService adminService;
-	
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private UserService userService;
 	
 	/**
 	 * µÇÂ¼À¹½ØÌø×ªµÇÂ¼Ò³
 	 */
 	@RequestMapping(value="/index")
 	public String loginForm() {
-		return "admin/login";
+		return "user/login";
 	}
 	
 	/**
@@ -39,18 +35,18 @@ public class AdminController {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		Admin admin = adminService.findByUsername(username);
-		if (admin != null && admin.getPassword().equals(password)) {
+		User user = userService.findByUsername(username);
+		if (user != null && user.getPassword().equals(password)) {
 			HttpSession session = request.getSession();
-			session.setAttribute("admin", admin);
+			session.setAttribute("user", user);
 			
-			admin.setLastaccesstime(sdf.format(new Date()));
-			admin.setLastaccessip(request.getRemoteAddr());
-			adminService.updateAdmin(admin);
+			user.setLastaccesstime(DateUtil.getNowDate());
+			user.setLastaccessip(request.getRemoteAddr());
+			userService.updateUser(user);
 			return "redirect:/booksystem/book/index";
 		} else {
 			model.addAttribute("code", "1001");
-			return "redirect:/booksystem/admin/index";
+			return "redirect:/booksystem/user/index";
 		}
 	}
 	
@@ -60,6 +56,6 @@ public class AdminController {
 	@RequestMapping(value="/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "admin/login";
+		return "user/login";
 	}
 }

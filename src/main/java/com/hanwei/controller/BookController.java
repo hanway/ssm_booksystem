@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.hanwei.entity.Book;
 import com.hanwei.service.BookService;
+import com.hanwei.util.DateUtil;
 import com.hanwei.util.ExcelExportUtil;
 import com.hanwei.util.Page;
 import com.hanwei.util.StringUtil;
@@ -30,8 +31,6 @@ public class BookController {
 	
 	@Autowired
 	private BookService bookService;
-	
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	/**
 	 * Ê×Ò³ÁÐ±í
@@ -94,7 +93,7 @@ public class BookController {
 			book.setIsbn(isbn);
 			book.setTotal(Integer.parseInt(total));
 			book.setNownum(Integer.parseInt(total));
-			book.setCreatetime(sdf.format(new Date()));
+			book.setCreatetime(DateUtil.getNowDate());
 			bookService.saveBook(book);
 		} else {
 			Book book = new Book();
@@ -104,7 +103,7 @@ public class BookController {
 			book.setPublisher(publisher);
 			book.setIsbn(isbn);
 			book.setTotal(Integer.parseInt(total));
-			book.setUpdatetime(sdf.format(new Date()));
+			book.setUpdatetime(DateUtil.getNowDate());
 			bookService.updateBook(book);
 		}
 		return "redirect:/booksystem/book/index";
@@ -161,7 +160,7 @@ public class BookController {
 					book.setIsbn(bk.getIsbn());
 					book.setTotal(bk.getTotal());
 					book.setNownum(bk.getNownum());
-					book.setCreatetime(sdf.format(new Date()));
+					book.setCreatetime(DateUtil.getNowDate());
 					bookList.add(book);
 				}
 				bookService.saveImportBook(bookList);

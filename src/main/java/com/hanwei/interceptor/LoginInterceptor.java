@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hanwei.entity.Admin;
+import com.hanwei.entity.User;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
@@ -22,10 +22,10 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
-		Admin admin = (Admin) request.getSession().getAttribute("admin");
-		if (admin == null) {
+		User user = (User) request.getSession().getAttribute("user");
+		if (user == null) {
 			System.out.println("=============Î´µÇÂ¼£¬ÇëµÇÂ¼=============");
-			response.sendRedirect("/booksystem/admin/index");
+			response.sendRedirect("/booksystem/user/index");
 			return false;
 		}
 		return true;
