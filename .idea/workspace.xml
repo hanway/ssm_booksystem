@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c38c1e5-2f3f-4988-8975-d4b953acb50b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanwei/controller/BorrowController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hanwei/controller/BorrowController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanwei/dao/CardMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/hanwei/dao/CardMapper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanwei/service/CardService.java" afterPath="$PROJECT_DIR$/src/main/java/com/hanwei/service/CardService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanwei/service/impl/CardServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/hanwei/service/impl/CardServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/cardMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/cardMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/borrow/list.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/borrow/list.jsp" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hanwei/interceptor/LoginInterceptor.java" afterPath="$PROJECT_DIR$/src/main/java/com/hanwei/interceptor/LoginInterceptor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,11 +29,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="borrowUsers.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="borrowUsers.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/borrow/borrowUsers.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-127">
-              <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+            <state relative-caret-position="231">
+              <caret line="37" column="49" lean-forward="false" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginInterceptor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hanwei/interceptor/LoginInterceptor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -48,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hanwei/service/CardService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -81,7 +86,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/cardMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
-              <caret line="34" column="48" lean-forward="true" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+              <caret line="34" column="48" lean-forward="false" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
               <folding>
                 <marker date="1530167502844" expanded="true" signature="737:780" ph="select * fro... card" />
                 <marker date="1530167502844" expanded="true" signature="871:975" ph="insert into card... " />
@@ -129,6 +134,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/cardMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hanwei/controller/BorrowController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/borrow/borrowUsers.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hanwei/interceptor/LoginInterceptor.java" />
       </list>
     </option>
   </component>
@@ -243,6 +249,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="hanwei" type="462c0819:PsiDirectoryNode" />
+              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm_booksystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm_booksystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="hanwei" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -288,6 +303,11 @@
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
               <item name="borrow" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm_booksystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm_booksystem" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -401,8 +421,7 @@
     </configuration>
     <configuration name="booksystem" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.69" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\Program Files\Java\jdk1.8.0_51\jre">
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="UPDATING_POLICY" value="restart-server" />
+      <option name="UPDATING_POLICY" value="update-resources" />
       <deployment>
         <artifact name="ssm_booksystem:war exploded">
           <settings>
@@ -496,12 +515,12 @@
       <workItem from="1530150621922" duration="2848000" />
       <workItem from="1530155837192" duration="457000" />
       <workItem from="1530156375480" duration="334000" />
-      <workItem from="1530156739923" duration="5728000" />
+      <workItem from="1530156739923" duration="6516000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9367000" />
+    <option name="totallyTimeSpent" value="10155000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -530,7 +549,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26096824" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26096824" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -611,8 +630,8 @@
         <state relative-caret-position="3278">
           <caret line="174" column="1" lean-forward="false" selection-start-line="174" selection-start-column="1" selection-end-line="174" selection-end-column="1" />
           <folding>
-            <element signature="e#4259#4260#0" expanded="true" />
-            <element signature="e#4286#4287#0" expanded="true" />
+            <element signature="e#4259#4260#0" expanded="false" />
+            <element signature="e#4286#4287#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -622,8 +641,8 @@
         <state relative-caret-position="1056">
           <caret line="60" column="1" lean-forward="false" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
           <folding>
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#678#679#0" expanded="true" />
+            <element signature="e#652#653#0" expanded="false" />
+            <element signature="e#678#679#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -649,8 +668,8 @@
         <state relative-caret-position="3146">
           <caret line="168" column="13" lean-forward="true" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="13" />
           <folding>
-            <element signature="e#4259#4260#0" expanded="true" />
-            <element signature="e#4286#4287#0" expanded="true" />
+            <element signature="e#4259#4260#0" expanded="false" />
+            <element signature="e#4286#4287#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -715,8 +734,8 @@
         <state relative-caret-position="690">
           <caret line="60" column="1" lean-forward="false" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
           <folding>
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#678#679#0" expanded="true" />
+            <element signature="e#652#653#0" expanded="false" />
+            <element signature="e#678#679#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -726,8 +745,8 @@
         <state relative-caret-position="3322">
           <caret line="174" column="1" lean-forward="false" selection-start-line="174" selection-start-column="1" selection-end-line="174" selection-end-column="1" />
           <folding>
-            <element signature="e#4259#4260#0" expanded="true" />
-            <element signature="e#4286#4287#0" expanded="true" />
+            <element signature="e#4259#4260#0" expanded="false" />
+            <element signature="e#4286#4287#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -743,7 +762,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hanwei/service/CardService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -770,7 +789,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/cardMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
-          <caret line="34" column="48" lean-forward="true" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+          <caret line="34" column="48" lean-forward="false" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
           <folding>
             <marker date="1530167502844" expanded="true" signature="737:780" ph="select * fro... card" />
             <marker date="1530167502844" expanded="true" signature="871:975" ph="insert into card... " />
@@ -794,8 +813,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/borrow/borrowUsers.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-127">
-          <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        <state relative-caret-position="231">
+          <caret line="37" column="49" lean-forward="false" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hanwei/interceptor/LoginInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding />
         </state>
       </provider>

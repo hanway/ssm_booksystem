@@ -24,7 +24,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
 		User user = (User) request.getSession().getAttribute("user");
 		if (user == null) {
-			System.out.println("=============Î´µÇÂ¼£¬ÇëµÇÂ¼=============");
+			System.out.println("=============æœªç™»å½•=============");
 			response.sendRedirect("/booksystem/user/index");
 			return false;
 		}
