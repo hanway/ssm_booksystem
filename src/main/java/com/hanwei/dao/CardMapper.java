@@ -15,4 +15,6 @@ public interface CardMapper {
 	void updateCard(Card card);
 
 	void delCard(String id);
+
+    List<Card> findByBookId(String bookId);
 }

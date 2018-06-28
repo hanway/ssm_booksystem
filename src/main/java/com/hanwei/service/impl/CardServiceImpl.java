@@ -40,5 +40,10 @@ public class CardServiceImpl implements CardService {
 		cardMapper.delCard(id);
 	}
 
+	@Override
+	public List<Card> findByBookId(String bookId) {
+		return cardMapper.findByBookId(bookId);
+	}
+
 
 }

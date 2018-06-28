@@ -56,7 +56,7 @@
 									${book.nownum}
 								</c:when>
 								<c:otherwise>
-									<a href="/admin/borrow/users?id=${book.id}" title="查看借阅该书籍的用户">${book.nownum}</a>
+									<a href="borrowUsers?id=${book.id}" title="查看借阅该书籍的用户">${book.nownum}</a>
 								</c:otherwise>
 							</c:choose>
 						</td>

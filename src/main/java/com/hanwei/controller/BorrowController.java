@@ -22,21 +22,19 @@ public class BorrowController {
 
 	@Autowired
 	private BookService bookService;
-
 	@Autowired
 	private CardService cardService;
-
 	@Autowired
 	private BorrowService borrowService;
 
-	@RequestMapping(value="/list")
+	@RequestMapping(value = "/list")
 	public String list(Model model) {
 		List<Book> bookList = bookService.findAll();
 		model.addAttribute("bookList", bookList);
 		return "borrow/list";
 	}
 
-	@RequestMapping(value="/borrowForm")
+	@RequestMapping(value = "/borrowForm")
 	public String borrowForm(HttpServletRequest request, Model model) {
 		//根据书籍id查询书籍信息
 		String bookId = request.getParameter("id");
@@ -49,7 +47,7 @@ public class BorrowController {
 		return "borrow/newBorrow";
 	}
 
-	@RequestMapping(value="saveBorrow")
+	@RequestMapping(value = "/saveBorrow")
 	public String saveBorrow(HttpServletRequest request, Model model) {
 		String bookId = request.getParameter("bookid");
 		String cardId = request.getParameter("cardid");
@@ -75,5 +73,15 @@ public class BorrowController {
 			return "borrow/newBorrow";
 		}
 		return "redirect:/booksystem/borrow/list";
+	}
+
+	@RequestMapping(value = "/borrowUsers")
+	public String borrowUsers(HttpServletRequest request, Model model) {
+		String bookId = request.getParameter("id");
+		Book book = bookService.selectBookById(Integer.parseInt(bookId));
+		List<Card> cardList = cardService.findByBookId(bookId);
+		model.addAttribute("book", book);
+		model.addAttribute("cardList", cardList);
+		return "borrow/borrowUsers";
 	}
 }
