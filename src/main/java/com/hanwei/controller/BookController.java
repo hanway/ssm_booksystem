@@ -126,11 +126,11 @@ public class BookController {
 	public void export(HttpServletResponse response) {
 		List<Book> bookList = bookService.findAll();
 		String titleName = "书籍清单";
-		String[] headers = new String[]{"书籍名称", "作者", "出版社", "ISBN码", "总数量", "剩余数量"};
-		String sheetName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		String[] fieldNames = {"bookname", "author", "publisher", "isbn", "total", "nownum"};
-		HSSFWorkbook workbook = ExcelExportUtil.exportExcel(sheetName, titleName, headers, bookList, fieldNames);
-		ExcelExportUtil.FzUtil(response, titleName, workbook);
+        String[] headers = new String[]{"书籍名称", "作者", "出版社", "ISBN码", "总数量", "剩余数量"};
+        String sheetName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String[] fieldNames = {"bookname", "author", "publisher", "isbn", "total", "nownum"};
+        HSSFWorkbook workbook = ExcelExportUtil.exportExcel(sheetName, titleName, headers, bookList, fieldNames);
+        ExcelExportUtil.FzUtil(response, titleName, workbook);
 	}
 
 	/**
