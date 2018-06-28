@@ -37,9 +37,8 @@
     	set bookname = #{bookname},
 			author = #{author},
 			publisher = #{publisher},
-			isbn = #{isbn},
 			total = #{total},
-			nownum = #{nownum},
+			isbn = #{isbn},
 			updatetime = #{updatetime}
 		where id = #{id}
     </update>
