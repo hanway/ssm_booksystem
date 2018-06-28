@@ -36,11 +36,11 @@ public class BorrowController {
 
 	@RequestMapping(value = "/borrowForm")
 	public String borrowForm(HttpServletRequest request, Model model) {
-		//æ ¹æ®ä¹¦ç±idæŸ¥è¯¢ä¹¦ç±ä¿¡æ¯
+		//¸ù¾İÊé¼®id²éÑ¯Êé¼®ĞÅÏ¢
 		String bookId = request.getParameter("id");
 		Book book = bookService.selectBookById(Integer.parseInt(bookId));
 
-		//æŸ¥è¯¢æ‰€æœ‰å€Ÿä¹¦è¯
+		//²éÑ¯ËùÓĞ½èÊéÖ¤
 		List<Card> cardList = cardService.findAll();
 		model.addAttribute("book", book);
 		model.addAttribute("cardList", cardList);
@@ -52,7 +52,7 @@ public class BorrowController {
 		String bookId = request.getParameter("bookid");
 		String cardId = request.getParameter("cardid");
 		Book book = bookService.selectBookById(Integer.parseInt(bookId));
-		//æŸ¥è¯¢æ‰€æœ‰å€Ÿä¹¦è¯
+		//²éÑ¯ËùÓĞ½èÊéÖ¤
 		List<Card> cardList = cardService.findAll();
 		if (StringUtil.isEmpty(cardId)) {
 			model.addAttribute("code", "1003");

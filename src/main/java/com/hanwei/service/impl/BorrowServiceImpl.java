@@ -44,6 +44,7 @@ public class BorrowServiceImpl implements BorrowService {
 				borrow = new Borrow();
 				borrow.setCid(card.getId().toString());
 				borrow.setBid(book.getId().toString());
+				borrow.setCreatetime(DateUtil.getNowDate());
 				borrowMapper.saveBorrow(borrow);
 				
 				//借阅成功，更新书籍剩余数量

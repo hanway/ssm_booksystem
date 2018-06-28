@@ -34,6 +34,7 @@
 			<!-- 先匹配所有路径 -->
 			<mvc:mapping path="/booksystem/book/**" />
 			<mvc:mapping path="/booksystem/card/**" />
+			<mvc:mapping path="/booksystem/borrow/**" />
 			<!-- 然后排除不需要检查的路径 -->
 			<!-- <mvc:exclude-mapping path="/booksystem/user/index"/>
 			<mvc:exclude-mapping path="/js/**"/>
