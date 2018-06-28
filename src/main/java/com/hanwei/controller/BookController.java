@@ -28,12 +28,12 @@ import com.hanwei.util.excel.ExcelParser;
 @Controller
 @RequestMapping(value="/booksystem/book")
 public class BookController {
-	
+
 	@Autowired
 	private BookService bookService;
-	
+
 	/**
-	 * Ê×Ò³ÁĞ±í
+	 * é¦–é¡µåˆ—è¡¨
 	 */
 	@RequestMapping(value="/index")
 	public String findAll(HttpServletRequest request, Model model) {
@@ -41,7 +41,7 @@ public class BookController {
 		String p = request.getParameter("p");
 		try {
 			if (StringUtil.isNotEmpty(bookname)) {
-				//´¦ÀíGet·½Ê½Ìá½»µÄÖĞÎÄ
+				//å¤„ç†Getæ–¹å¼æäº¤çš„ä¸­æ–‡
 				bookname = new String(bookname.getBytes("ISO8859-1"),"UTF-8");
 			}
 			int pageNo = 1;
@@ -59,9 +59,9 @@ public class BookController {
 		}
 		return "book/index";
 	}
-	
+
 	/**
-	 * ĞÂÔö»òĞŞ¸Ä±íµ¥Ò³
+	 * æ–°å¢æˆ–ä¿®æ”¹è¡¨å•é¡µ
 	 */
 	@RequestMapping(value="/newOrEditBook")
 	public String newOrEditBook(HttpServletRequest request, Model model) {
@@ -72,9 +72,9 @@ public class BookController {
 		}
 		return "book/newOrEditBook";
 	}
-	
+
 	/**
-	 * ĞÂÔö»òĞŞ¸ÄÊı¾İ³Ö¾Ã»¯
+	 * æ–°å¢æˆ–ä¿®æ”¹æ•°æ®æŒä¹…åŒ–
 	 */
 	@RequestMapping(value="/saveOrUpdateBook")
 	public String saveOrUpdateBook(HttpServletRequest request) {
@@ -84,7 +84,7 @@ public class BookController {
 		String publisher = request.getParameter("publisher");
 		String isbn = request.getParameter("isbn");
 		String total = request.getParameter("total");
-		
+
 		if (StringUtil.isEmpty(id)) {
 			Book book = new Book();
 			book.setBookname(bookname);
@@ -108,9 +108,9 @@ public class BookController {
 		}
 		return "redirect:/booksystem/book/index";
 	}
-	
+
 	/**
-	 * É¾³ıÒ»ÌõÊı¾İ
+	 * åˆ é™¤ä¸€æ¡æ•°æ®
 	 */
 	@RequestMapping(value="/delBook")
 	public String delBook(HttpServletRequest request) {
@@ -118,32 +118,32 @@ public class BookController {
 		bookService.delBook(id);
 		return "redirect:/booksystem/book/index";
 	}
-	
+
 	/**
-	 * µ¼³öExcel
+	 * å¯¼å‡ºExcel
 	 */
 	@RequestMapping(value="/export")
 	public void export(HttpServletResponse response) {
 		List<Book> bookList = bookService.findAll();
-		String titleName = "Êé¼®Çåµ¥";
-        String[] headers = new String[]{"Êé¼®Ãû³Æ", "×÷Õß", "³ö°æÉç", "ISBNÂë", "×ÜÊıÁ¿", "Ê£ÓàÊıÁ¿"};
-        String sheetName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-        String[] fieldNames = {"bookname", "author", "publisher", "isbn", "total", "nownum"};
-        HSSFWorkbook workbook = ExcelExportUtil.exportExcel(sheetName, titleName, headers, bookList, fieldNames);
-        ExcelExportUtil.FzUtil(response, titleName, workbook);
+		String titleName = "ä¹¦ç±æ¸…å•";
+		String[] headers = new String[]{"ä¹¦ç±åç§°", "ä½œè€…", "å‡ºç‰ˆç¤¾", "ISBNç ", "æ€»æ•°é‡", "å‰©ä½™æ•°é‡"};
+		String sheetName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		String[] fieldNames = {"bookname", "author", "publisher", "isbn", "total", "nownum"};
+		HSSFWorkbook workbook = ExcelExportUtil.exportExcel(sheetName, titleName, headers, bookList, fieldNames);
+		ExcelExportUtil.FzUtil(response, titleName, workbook);
 	}
-	
+
 	/**
-	 * µ¼ÈëExcel±íµ¥Ò³
+	 * å¯¼å…¥Excelè¡¨å•é¡µ
 	 */
 	@RequestMapping(value="/importExcel")
 	public String importExcel() {
 		return "book/import";
 	}
-	
+
 	/**
-	 * µ¼ÈëExcel³Ö¾Ã»¯
-	 * @param dataFile£ºÉÏ´«µÄÎÄ¼ş
+	 * å¯¼å…¥ExcelæŒä¹…åŒ–
+	 * @param dataFileï¼šä¸Šä¼ çš„æ–‡ä»¶
 	 */
 	@RequestMapping(value="/importSave")
 	public String importSave(MultipartFile dataFile) {
@@ -165,7 +165,7 @@ public class BookController {
 				}
 				bookService.saveImportBook(bookList);
 			} else {
-				throw new RuntimeException("µ¼ÈëµÄExcelÃ»ÓĞÊı¾İ£¡");
+				throw new RuntimeException("å¯¼å…¥çš„Excelæ²¡æœ‰æ•°æ®ï¼");
 			}
 		} catch (InstantiationException | IllegalAccessException | IOException e) {
 			e.printStackTrace();

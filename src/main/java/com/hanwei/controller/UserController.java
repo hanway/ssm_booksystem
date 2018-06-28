@@ -15,20 +15,20 @@ import com.hanwei.util.DateUtil;
 @Controller
 @RequestMapping(value="/booksystem/user")
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	/**
-	 * µÇÂ¼À¹½ØÌø×ªµÇÂ¼Ò³
+	 * ç™»å½•æ‹¦æˆªè·³è½¬ç™»å½•é¡µ
 	 */
 	@RequestMapping(value="/index")
 	public String loginForm() {
 		return "user/login";
 	}
-	
+
 	/**
-	 * Ğ£ÑéÓÃ»§ÃûÃÜÂë
+	 * æ ¡éªŒç”¨æˆ·åå¯†ç 
 	 */
 	@RequestMapping(value="/login")
 	public String login(HttpServletRequest request, Model model) {
@@ -39,7 +39,7 @@ public class UserController {
 		if (user != null && user.getPassword().equals(password)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			
+
 			user.setLastaccesstime(DateUtil.getNowDate());
 			user.setLastaccessip(request.getRemoteAddr());
 			userService.updateUser(user);
@@ -49,9 +49,9 @@ public class UserController {
 			return "redirect:/booksystem/user/index";
 		}
 	}
-	
+
 	/**
-	 * ÍË³öµÇÂ¼
+	 * é€€å‡ºç™»å½•
 	 */
 	@RequestMapping(value="/logout")
 	public String logout(HttpSession session) {

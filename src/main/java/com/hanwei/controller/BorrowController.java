@@ -22,39 +22,39 @@ public class BorrowController {
 
 	@Autowired
 	private BookService bookService;
-	
+
 	@Autowired
 	private CardService cardService;
-	
+
 	@Autowired
 	private BorrowService borrowService;
-	
+
 	@RequestMapping(value="/list")
 	public String list(Model model) {
 		List<Book> bookList = bookService.findAll();
 		model.addAttribute("bookList", bookList);
 		return "borrow/list";
 	}
-	
+
 	@RequestMapping(value="/borrowForm")
 	public String borrowForm(HttpServletRequest request, Model model) {
-		//¸ù¾İÊé¼®id²éÑ¯Êé¼®ĞÅÏ¢
+		//æ ¹æ®ä¹¦ç±idæŸ¥è¯¢ä¹¦ç±ä¿¡æ¯
 		String bookId = request.getParameter("id");
 		Book book = bookService.selectBookById(Integer.parseInt(bookId));
-		
-		//²éÑ¯ËùÓĞ½èÊéÖ¤
+
+		//æŸ¥è¯¢æ‰€æœ‰å€Ÿä¹¦è¯
 		List<Card> cardList = cardService.findAll();
 		model.addAttribute("book", book);
 		model.addAttribute("cardList", cardList);
 		return "borrow/newBorrow";
 	}
-	
+
 	@RequestMapping(value="saveBorrow")
 	public String saveBorrow(HttpServletRequest request, Model model) {
 		String bookId = request.getParameter("bookid");
 		String cardId = request.getParameter("cardid");
 		Book book = bookService.selectBookById(Integer.parseInt(bookId));
-		//²éÑ¯ËùÓĞ½èÊéÖ¤
+		//æŸ¥è¯¢æ‰€æœ‰å€Ÿä¹¦è¯
 		List<Card> cardList = cardService.findAll();
 		if (StringUtil.isEmpty(cardId)) {
 			model.addAttribute("code", "1003");

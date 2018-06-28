@@ -63,6 +63,7 @@
 		<if test="bookname !=null and bookname != ''">
             where bookname like CONCAT('%',#{bookname}, '%')
         </if>
+        order by createtime desc
 		limit #{pageNo}, #{pageSize}
 	</select>
 	

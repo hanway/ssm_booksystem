@@ -17,12 +17,12 @@ import com.hanwei.util.StringUtil;
 @Controller
 @RequestMapping(value="/booksystem/card")
 public class CardController {
-	
+
 	@Autowired
 	private CardService cardService;
-	
+
 	/**
-	 * ½èÊéÖ¤Ê×Ò³ÁĞ±í
+	 * å€Ÿä¹¦è¯é¦–é¡µåˆ—è¡¨
 	 */
 	@RequestMapping(value="/list")
 	public String list(Model model) {
@@ -30,9 +30,9 @@ public class CardController {
 		model.addAttribute("cardList", cardList);
 		return "card/list";
 	}
-	
+
 	/**
-	 * ĞÂÔö»òĞŞ¸Ä½èÊéÖ¤±íµ¥Ò³
+	 * æ–°å¢æˆ–ä¿®æ”¹å€Ÿä¹¦è¯è¡¨å•é¡µ
 	 */
 	@RequestMapping(value="/newOrEditCard")
 	public String newOrEditCard(HttpServletRequest request, Model model) {
@@ -43,9 +43,9 @@ public class CardController {
 		}
 		return "card/newOrEditCard";
 	}
-	
+
 	/**
-	 * ĞÂÔö»òĞŞ¸Ä½èÊéÖ¤
+	 * æ–°å¢æˆ–ä¿®æ”¹å€Ÿä¹¦è¯
 	 */
 	@RequestMapping(value="saveOrUpdateCard")
 	public String saveOrUpdateCard(HttpServletRequest request) {
@@ -53,8 +53,8 @@ public class CardController {
 		String cardnum = request.getParameter("cardnum");
 		String name = request.getParameter("name");
 		String tel = request.getParameter("tel");
-		
-		//ÅĞ¶ÏidÊÇ·ñÎª¿Õ£¬Èç¹ûÎª¿Õ×öĞÂÔö²Ù×÷£¬²»Îª¿Õ×öĞŞ¸Ä²Ù×÷
+
+		//åˆ¤æ–­idæ˜¯å¦ä¸ºç©ºï¼Œå¦‚æœä¸ºç©ºåšæ–°å¢æ“ä½œï¼Œä¸ä¸ºç©ºåšä¿®æ”¹æ“ä½œ
 		if (StringUtil.isEmpty(id)) {
 			Card card = new Card();
 			card.setCardnum(cardnum);
@@ -72,7 +72,7 @@ public class CardController {
 		}
 		return "redirect:/booksystem/card/list";
 	}
-	
+
 	@RequestMapping(value="/delCard")
 	public String delCard(HttpServletRequest request) {
 		String id = request.getParameter("id");
