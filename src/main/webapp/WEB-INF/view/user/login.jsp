@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>图书管理系统-登录</title>
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
 	<link rel="stylesheet" href="/css/bootstrap-2.3.1.min.css">
 	<style type="text/css">
 		.login{

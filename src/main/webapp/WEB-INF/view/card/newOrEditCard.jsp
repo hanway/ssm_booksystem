@@ -5,6 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>新增/修改图书</title>
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
 	<link rel="stylesheet" href="/css/bootstrap-2.3.1.min.css">
 	<link rel="stylesheet" href="/css/style.css">
 </head>

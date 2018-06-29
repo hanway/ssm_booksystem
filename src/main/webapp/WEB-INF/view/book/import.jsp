@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>数据导入</title>
-<link rel="stylesheet" href="/css/bootstrap-2.3.1.min.css">
-<link rel="stylesheet" href="/css/style.css">
-
+	<meta charset="UTF-8">
+	<title>数据导入</title>
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/css/bootstrap-2.3.1.min.css">
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
