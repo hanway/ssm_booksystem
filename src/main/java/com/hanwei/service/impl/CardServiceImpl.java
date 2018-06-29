@@ -45,5 +45,8 @@ public class CardServiceImpl implements CardService {
 		return cardMapper.findByBookId(bookId);
 	}
 
-
+	@Override
+	public Card findCardByCardnum(String cardnum) {
+		return cardMapper.findCardByCardnum(cardnum);
+	}
 }

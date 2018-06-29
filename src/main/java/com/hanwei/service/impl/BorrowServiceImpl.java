@@ -35,7 +35,7 @@ public class BorrowServiceImpl implements BorrowService {
 			//未查询到借书证
 			return -1;
 		} else {
-			Borrow borrow = borrowMapper.findByCidAndBid(cardId, bookId);
+			Borrow borrow = findByCidAndBid(cardId, bookId);
 			if (borrow != null) {
 				//已借阅过此书
 				return -2;
@@ -54,5 +54,15 @@ public class BorrowServiceImpl implements BorrowService {
 				return 0;
 			}
 		}
+	}
+
+	@Override
+	public Borrow findByCidAndBid(String cardId, String bookId) {
+		return borrowMapper.findByCidAndBid(cardId, bookId);
+	}
+
+	@Override
+	public void deleteBorrow(Integer id) {
+		borrowMapper.deleteBorrow(id);
 	}
 }

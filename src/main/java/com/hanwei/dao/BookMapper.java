@@ -23,4 +23,6 @@ public interface BookMapper {
 	public List<Book> findByPage(@Param("pageNo") int pageNo, @Param("pageSize") int pageSize, @Param("bookname") String bookname);
 	
 	public int findByCount();
+
+	public List<Book> findByCardId(int cardId);
 }

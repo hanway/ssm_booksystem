@@ -17,4 +17,6 @@ public interface CardMapper {
 	void delCard(String id);
 
     List<Card> findByBookId(String bookId);
+
+	Card findCardByCardnum(String cardnum);
 }

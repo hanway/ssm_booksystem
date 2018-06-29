@@ -39,4 +39,8 @@
 	<select id="findByBookId" resultMap="BaseResultMap">
 		select * from card where id IN (SELECT cid FROM borrow where bid = #{bid})
 	</select>
+	
+	<select id="findCardByCardnum" resultMap="BaseResultMap">
+    	select * from card where cardnum = #{cardnum}
+    </select>
 </mapper>

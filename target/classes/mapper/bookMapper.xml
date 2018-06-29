@@ -70,4 +70,8 @@
 	<select id="findByCount" resultType="java.lang.Integer">
 		select count(1) from book
 	</select>
+	
+	<select id="findByCardId" resultMap="BaseResultMap">
+		select * from book where id IN (SELECT bid FROM borrow where cid = #{cid})
+	</select>
 </mapper>

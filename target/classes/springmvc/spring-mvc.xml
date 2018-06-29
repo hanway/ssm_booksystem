@@ -35,6 +35,7 @@
 			<mvc:mapping path="/booksystem/book/**" />
 			<mvc:mapping path="/booksystem/card/**" />
 			<mvc:mapping path="/booksystem/borrow/**" />
+			<mvc:mapping path="/booksystem/revert/**" />
 			<!-- 然后排除不需要检查的路径 -->
 			<!-- <mvc:exclude-mapping path="/booksystem/user/index"/>
 			<mvc:exclude-mapping path="/js/**"/>

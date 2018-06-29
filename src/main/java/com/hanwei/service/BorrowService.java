@@ -8,4 +8,8 @@ public interface BorrowService {
 
 	int borrowNewBook(String bookId, String cardId);
 
+	Borrow findByCidAndBid(String cardId, String bookId);
+
+	void deleteBorrow(Integer id);
+
 }

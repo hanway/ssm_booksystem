@@ -49,4 +49,9 @@ public class BookServiceImpl implements BookService {
 	public int findByCount() {
 		return bookMapper.findByCount();
 	}
+
+	@Override
+	public List<Book> findByCardId(int cardId) {
+		return bookMapper.findByCardId(cardId);
+	}
 }

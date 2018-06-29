@@ -18,4 +18,8 @@
     <select id="findByCidAndBid" resultMap="BaseResultMap">
 		select * from borrow where cid = #{cardId} and bid = #{bookId}
 	</select>
+	
+	<delete id="deleteBorrow" parameterType="int">
+    	delete from borrow where id = #{id}
+    </delete>
 </mapper>

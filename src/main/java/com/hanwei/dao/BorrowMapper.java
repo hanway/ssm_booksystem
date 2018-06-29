@@ -10,4 +10,5 @@ public interface BorrowMapper {
 
 	Borrow findByCidAndBid(@Param("cardId") String cardId, @Param("bookId") String bookId);
 
+	void deleteBorrow(Integer id);
 }

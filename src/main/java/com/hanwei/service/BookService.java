@@ -21,4 +21,6 @@ public interface BookService {
 	public List<Book> findByPage(int pageNo, int pageSize, String bookname);
 	
 	public int findByCount();
+
+	public List<Book> findByCardId(int cardId);
 }
