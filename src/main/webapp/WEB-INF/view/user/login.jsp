@@ -29,9 +29,9 @@
 				<input type="text" name="username"/>
 				<label>密码</label>
 				<input type="password" name="password" id="password"/>
-				<label class="checkbox">
+				<!-- <label class="checkbox">
 					<input type="checkbox" name="remeberme" value="yes">记住用户名和密码
-				</label>
+				</label> -->
 				<div class="form-actions">
 					<button id="btn" type="button" class="btn btn-primary">登录</button>
 				</div>
